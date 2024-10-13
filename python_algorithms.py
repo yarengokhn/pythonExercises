@@ -72,5 +72,37 @@ merge_sort(arr_test)
 print(arr_test)
 
 
+#fractional knapsack greedy algorithm 
+def frac_knac(profits,weights,W):
+
+    n = len(profits)
+
+    ratios = [(profits[i] / weights[i], profits[i], weights[i]) for i in range(n)]
+
+    ratios.sort(reverse=True)
+
+    total_profit = 0
+    current_weight = 0 
+
+    for ratio, profit,weight in ratios:
+        if current_weight + weight <=W:
+            total_profit += profit
+            current_weight += weight
+        else:
+            fraction = (W-current_weight)/weight
+            total_profit += profit * fraction
+            break
+
+    return total_profit
+
+profits = [40,100,50,60]
+weights = [20,10,40,30]
+W1 = 50
+print("Maximum value in knapsack = ",frac_knac(profits,weights,W1)
+      )
+
+
+
+
 
 
