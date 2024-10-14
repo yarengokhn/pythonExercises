@@ -32,11 +32,41 @@ mylist = [
   { "_id": 14, "name": "Viola", "address": "Sideway 1633"}
 ]
 
-# x = mycollection.insert_many(mylist)
-# print(x.inserted_ids)
+x = mycollection.insert_many(mylist)
+print(x.inserted_ids)
 
 # x = mycollection.find_one()
 # print(x)
 
-for x in mycollection.find():
-    print(x)
+# for x in mycollection.find():
+#     print(x)
+
+
+
+def binary_search(array, target):
+  left = 0
+  right = len(array) - 1
+  while left <= right:
+    mid = (left + right) // 2
+
+    if array[mid] == target:
+      return mid
+      
+    if array[mid] < target:
+      left = mid + 1
+
+    else:
+      right = mid -1   
+
+  return -1
+
+arr1 = [1,3,5,7,9,11,13,15,17,19]
+targetValue = 15
+
+result = binary_search(arr1,targetValue)
+
+if result != -1:
+    print("Value",targetValue,"found at index", result)
+else:
+    print("Target not found in array.")
+        
